@@ -1,0 +1,29 @@
+generator client {
+  provider        = "prisma-client-js"
+  engineType      = "library"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+// O plano sugeriu um Enum para as categorias
+enum Category {
+  Toys
+  Clothes
+  Sandals
+  Misc
+}
+
+model Product {
+  id          String   @id @default(uuid()) // UUID é mais seguro que ID sequencial
+  name        String
+  description String   @db.Text
+  price       Decimal  @db.Decimal(10, 2)
+  category    Category
+  stockCount  Int      @default(1)
+  imagePath   String?  // Onde guardaremos o caminho da foto
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
