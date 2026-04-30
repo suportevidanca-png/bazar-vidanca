@@ -15,7 +15,7 @@ export default function Header() {
             </Link>
             <nav className="hidden md:flex space-x-8">
               <Link href="/" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Produtos</Link>
-              <Link href="#" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Sobre o Instituto</Link>
+              <Link href="/sobre" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Sobre o Instituto</Link>
               <Link href="/admin" className="text-sm font-medium text-slate-600 hover:text-slate-900 transition">Painel Admin</Link>
             </nav>
           </div>
@@ -26,7 +26,7 @@ export default function Header() {
             <button className="md:hidden p-2 text-slate-400 hover:text-slate-900 transition rounded-full hover:bg-slate-50">
               <Menu className="w-5 h-5" />
             </button>
-            <Link href="#" className="hidden md:flex items-center justify-center bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 transition shadow-sm">
+            <Link href="/doar" className="hidden md:flex items-center justify-center bg-slate-900 text-white px-5 py-2.5 rounded-full text-sm font-medium hover:bg-slate-800 transition shadow-sm">
               Doar agora
             </Link>
           </div>

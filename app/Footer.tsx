@@ -27,8 +27,8 @@ export default function Footer() {
             <h3 className="text-white font-semibold mb-4">Navegação</h3>
             <ul className="space-y-3">
               <li><Link href="/" className="text-sm hover:text-white transition">Vitrine</Link></li>
-              <li><Link href="#" className="text-sm hover:text-white transition">Sobre o Instituto</Link></li>
-              <li><Link href="#" className="text-sm hover:text-white transition">Como doar produtos</Link></li>
+              <li><Link href="/sobre" className="text-sm hover:text-white transition">Sobre o Instituto</Link></li>
+              <li><Link href="/doar" className="text-sm hover:text-white transition">Como doar produtos</Link></li>
               <li><Link href="/admin" className="text-sm hover:text-white transition">Acesso Restrito</Link></li>
             </ul>
           </div>
@@ -38,15 +38,15 @@ export default function Footer() {
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-slate-500 shrink-0" />
-                <span className="text-sm leading-relaxed">Sede do Instituto Vidança<br />Fortaleza - CE</span>
+                <span className="text-sm leading-relaxed">Avenida L, 400 - Vila Velha<br />Fortaleza - CE</span>
               </li>
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-slate-500 shrink-0" />
-                <span className="text-sm">(85) 99999-9999</span>
+                <span className="text-sm">(85) 98643-0182</span>
               </li>
               <li className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-slate-500 shrink-0" />
-                <span className="text-sm">contato@institutovidanca.org</span>
+                <span className="text-sm">contato@vidanca.org</span>
               </li>
             </ul>
           </div>
@@ -56,7 +56,7 @@ export default function Footer() {
             <p className="text-sm text-slate-400 mb-4 leading-relaxed">
               Aceitamos doações de itens usados em bom estado para o bazar. Entre em contato para saber mais!
             </p>
-            <Link href="#" className="flex items-center justify-center gap-2 w-full bg-slate-800 hover:bg-slate-700 text-white px-4 py-3 rounded-xl text-sm font-medium transition">
+            <Link href="/doar" className="flex items-center justify-center gap-2 w-full bg-slate-800 hover:bg-slate-700 text-white px-4 py-3 rounded-xl text-sm font-medium transition">
               <Heart className="w-4 h-4 text-red-400" />
               Seja um doador
             </Link>

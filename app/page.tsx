@@ -38,9 +38,9 @@ export default async function Home() {
                 Catálogo Vazio
               </button>
             )}
-            <button className="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-full font-medium hover:bg-slate-50 transition">
+            <Link href="/sobre" className="bg-white border border-slate-200 text-slate-900 px-8 py-4 rounded-full font-medium hover:bg-slate-50 transition">
               Nossa História
-            </button>
+            </Link>
           </div>
         </div>
 
