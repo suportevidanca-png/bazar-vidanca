@@ -1,0 +1,50 @@
+# Arquitetura do Projeto Bazar Vidança
+
+Este documento apresenta um resumo da arquitetura, tecnologias e estrutura de diretórios do projeto em desenvolvimento.
+
+## 1. Tecnologias Principais
+
+O projeto é um sistema web (e-commerce/institucional) construído com as seguintes tecnologias de ponta:
+
+*   **Framework:** Next.js (Versão 16.2.4) utilizando o App Router.
+*   **Linguagem:** TypeScript, garantindo tipagem estática e maior segurança no código.
+*   **Biblioteca de UI:** React (Versão 19).
+*   **Estilização:** Tailwind CSS (Versão 4) via PostCSS, utilizado para um design moderno e responsivo. Ícones fornecidos pela biblioteca `lucide-react`.
+*   **Banco de Dados & ORM:** Prisma ORM (Versão 7.8.0) conectado a um banco de dados relacional MySQL/MariaDB (com `@prisma/adapter-mariadb`).
+
+## 2. Estrutura de Diretórios e Pastas
+
+A organização do código segue as convenções modernas do Next.js (App Router):
+
+*   **`/app/`**: É o núcleo da aplicação, contendo as rotas e componentes globais.
+    *   `layout.tsx`, `globals.css`: Estrutura principal e estilos globais que envolvem todas as páginas.
+    *   `Header.tsx` e `Footer.tsx`: Componentes de cabeçalho e rodapé compartilhados pelas páginas.
+    *   `page.tsx`: A página inicial (Landing Page/Catálogo Principal).
+    *   `/admin/`: Rota(s) destinada(s) ao painel de administração.
+    *   `/doar/`: Página "Central de Doações".
+    *   `/product/`: Rotas dinâmicas para detalhes de produtos.
+    *   `/sobre/`: Página institucional "Nossa História".
+*   **`/lib/`**: Contém bibliotecas e configurações compartilhadas, em especial:
+    *   `prisma.ts`: Configuração e instância do cliente do Prisma para acesso global ao banco de dados.
+*   **`/prisma/`**: Configurações de banco de dados.
+    *   `schema.prisma`: Onde estão definidos os modelos de dados (ex: `product` com seus atributos como nome, preço, estoque, categoria, condição, etc.).
+*   **`/public/`**: Arquivos estáticos (ex: imagens e o `favicon.ico`).
+
+## 3. Modelo de Dados Principal (Prisma)
+
+A entidade central do sistema atualmente é o Produto (`product`), estruturada para suportar um e-commerce:
+*   ID (UUID)
+*   Nome e Descrições (Curta e Detalhada)
+*   Preço e Estoque
+*   Categoria (Enum: Toys, Clothes, Sandals, Misc)
+*   Condição (Enum: NEW, LIKE_NEW, USED)
+*   Características Adicionais (Tamanho, Cor, Peso, Dimensões)
+*   Imagens (armazenadas via JSON)
+*   Destaque (`isFeatured` - booleano para vitrine)
+
+## 4. Fluxo de Dados
+
+1.  O **Frontend (Next.js/React)** faz requisições (server-side ou client-side) solicitando dados.
+2.  A camada de acesso a dados (via **Prisma Client** em `/lib/prisma.ts`) intercepta essa requisição.
+3.  O Prisma traduz a chamada para **SQL** e busca no banco de dados **MySQL/MariaDB**.
+4.  Os dados tipados retornam ao frontend e são renderizados usando os componentes React estilizados com Tailwind CSS.
