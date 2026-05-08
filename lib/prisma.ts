@@ -2,16 +2,15 @@ import { PrismaClient } from '@prisma/client'
 import { PrismaMariaDb } from '@prisma/adapter-mariadb'
 
 const prismaClientSingleton = () => {
-  // Pegamos a URL diretamente do processo
   const url = process.env.DATABASE_URL;
   
   if (!url || url.includes("undefined")) {
-    throw new Error("ERRO: Variável DATABASE_URL não carregada. Verifique seu arquivo .env na raiz.");
+    console.warn("AVISO: Variável DATABASE_URL não carregada. Se isso for durante o build, é normal. Em produção causará erros.");
+    // Retorna um client sem adaptador (vai falhar apenas na hora da query se a url não existir, salvando o build)
+    return new PrismaClient();
   }
 
   const connectionString = url.replace('mysql://', 'mariadb://');
-  
-  // O adaptador PrismaMariaDb cria o pool internamente
   const adapter = new PrismaMariaDb(connectionString);
   
   return new PrismaClient({ adapter });
