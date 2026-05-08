@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import { ShoppingBag, ArrowLeft, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
 
+export const dynamic = 'force-dynamic';
+
 export default async function ProductPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
 

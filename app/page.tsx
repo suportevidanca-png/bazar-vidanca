@@ -2,6 +2,8 @@ import { ShoppingBag, ArrowRight } from 'lucide-react';
 import { prisma } from '@/lib/prisma'; // Importa a conexão
 import Link from 'next/link';
 
+export const dynamic = 'force-dynamic';
+
 export default async function Home() {
   // Busca os produtos do MySQL usando o Prisma
   const products = await prisma.product.findMany({
