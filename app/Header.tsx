@@ -1,11 +1,17 @@
 'use client';
 
 import Link from 'next/link';
-import { ShoppingBag, Search, Menu, Heart } from 'lucide-react';
+import { Search, Menu, Heart } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { usePathname } from 'next/navigation';
+import CartIcon from '@/components/CartIcon';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const pathname = usePathname();
+  
+  // A transparência dinâmica é apenas para a Home
+  const isHome = pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -18,10 +24,10 @@ export default function Header() {
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 w-full z-50 transition-all duration-300 ${
-        isScrolled 
-          ? 'bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-sm py-2' 
-          : 'bg-gradient-to-b from-black/60 to-transparent py-4'
+      className={`w-full z-50 transition-all duration-300 ${
+        isHome 
+          ? `fixed top-0 left-0 right-0 ${isScrolled ? 'bg-slate-900/90 backdrop-blur-md border-b border-slate-800 shadow-sm py-2' : 'bg-gradient-to-b from-black/60 to-transparent py-4'}`
+          : 'sticky top-0 bg-slate-900 border-b border-slate-800 shadow-sm py-2'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -46,6 +52,8 @@ export default function Header() {
             <button className="p-2 text-slate-300 hover:text-white transition rounded-full hover:bg-white/10">
               <Search className="w-5 h-5" />
             </button>
+            {/* Carrinho Restaurado */}
+            <CartIcon />
             <button className="md:hidden p-2 text-slate-300 hover:text-white transition rounded-full hover:bg-white/10">
               <Menu className="w-5 h-5" />
             </button>
