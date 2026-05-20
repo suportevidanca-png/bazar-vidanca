@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
 import { ShoppingBag, ArrowLeft, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
+import AddToCartButton from "@/components/AddToCartButton";
 
 export const dynamic = 'force-dynamic';
 
@@ -99,16 +100,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
                 )}
               </div>
 
-              {/* Ação Principal */}
-              {isOutOfStock ? (
-                <button disabled className="w-full bg-slate-100 text-slate-400 py-5 rounded-2xl font-bold text-lg mb-6 cursor-not-allowed border border-slate-200">
-                  Produto Esgotado
-                </button>
-              ) : (
-                <button className="w-full bg-slate-900 text-white py-5 rounded-2xl font-bold text-lg hover:bg-blue-600 transition-colors shadow-xl shadow-slate-900/20 mb-6 flex items-center justify-center gap-3">
-                  <ShoppingBag size={24} /> Adicionar à Sacola
-                </button>
-              )}
+              <AddToCartButton product={product} />
 
               {/* Trust Badges */}
               <div className="flex gap-6 py-6 border-y border-slate-100 mb-8">
