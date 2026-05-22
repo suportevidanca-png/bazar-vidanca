@@ -20,11 +20,12 @@ export default async function InstitutionalHome() {
       <section className="relative w-full min-h-[90vh] flex items-center pt-20 pb-32">
         {/* Background Image & Overlays */}
         <div className="absolute inset-0 z-0">
-          <img 
-            src="/hero.png" 
-            alt="Instituto Vidança" 
-            className="w-full h-full object-cover"
-          />
+          <ul className="slideshow">
+            <li><span>Image 1</span></li>
+            <li><span>Image 2</span></li>
+            <li><span>Image 3</span></li>
+            <li><span>Image 4</span></li>
+          </ul>
           {/* Degradê escuro para garantir legibilidade (Gerando Falcões style) */}
           <div className="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-transparent"></div>
         </div>
