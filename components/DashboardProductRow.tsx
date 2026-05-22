@@ -9,16 +9,22 @@ export default function DashboardProductRow({ product }: { product: product }) {
   const [stock, setStock] = useState(product.stockCount);
 
   const handleToggleActive = () => {
-    startTransition(() => {
-      toggleProductStatus(product.id, !product.isActive);
-    });
+    const action = product.isActive ? 'remover' : 'incluir';
+    if (window.confirm(`Tem certeza que deseja ${action} este produto na vitrine?`)) {
+      startTransition(() => {
+        toggleProductStatus(product.id, !product.isActive);
+      });
+    }
   };
 
   const handleStockUpdate = (newStock: number) => {
     const validStock = Math.max(0, newStock);
     setStock(validStock);
+  };
+
+  const saveStock = () => {
     startTransition(() => {
-      updateProductStock(product.id, validStock);
+      updateProductStock(product.id, stock);
     });
   };
 
@@ -39,16 +45,27 @@ export default function DashboardProductRow({ product }: { product: product }) {
         </span>
       </td>
       <td className="p-4">
-        <div className="flex items-center justify-center gap-2">
-          <button 
-            onClick={() => handleStockUpdate(stock - 1)}
-            className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition text-slate-600 font-bold"
-          >-</button>
-          <span className="w-8 text-center font-bold text-slate-800">{stock}</span>
-          <button 
-            onClick={() => handleStockUpdate(stock + 1)}
-            className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition text-slate-600 font-bold"
-          >+</button>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <div className="flex items-center justify-center gap-2">
+            <button 
+              onClick={() => handleStockUpdate(stock - 1)}
+              className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition text-slate-600 font-bold"
+            >-</button>
+            <span className="w-8 text-center font-bold text-slate-800">{stock}</span>
+            <button 
+              onClick={() => handleStockUpdate(stock + 1)}
+              className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center hover:bg-slate-200 transition text-slate-600 font-bold"
+            >+</button>
+          </div>
+          {stock !== product.stockCount && (
+            <button 
+              onClick={saveStock} 
+              disabled={isPending}
+              className="px-3 py-1 bg-blue-600 text-white rounded-md text-xs font-bold hover:bg-blue-700 shadow-sm"
+            >
+              Salvar
+            </button>
+          )}
         </div>
       </td>
       <td className="p-4 text-center">

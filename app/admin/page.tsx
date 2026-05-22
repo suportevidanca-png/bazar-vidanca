@@ -3,6 +3,7 @@ import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ProductCondition } from "@prisma/client";
 import Link from "next/link";
+import HtmlTextArea from "@/components/HtmlTextArea";
 
 export default function AdminPage() {
   async function createProduct(formData: FormData) {
@@ -110,7 +111,7 @@ export default function AdminPage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Descrição Detalhada</label>
-            <textarea name="detailedDescription" rows={4} required placeholder="História da peça, material, dimensões..." className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors"></textarea>
+            <HtmlTextArea name="detailedDescription" required placeholder="História da peça, material, dimensões..." className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors" />
           </div>
         </div>
 

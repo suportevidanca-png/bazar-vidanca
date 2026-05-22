@@ -9,7 +9,7 @@ export interface CartItem {
 
 interface CartState {
   items: CartItem[];
-  addItem: (product: product) => void;
+  addItem: (product: product, quantity?: number) => void;
   removeItem: (productId: string) => void;
   updateQuantity: (productId: string, quantity: number) => void;
   clearCart: () => void;
@@ -21,16 +21,19 @@ export const useCartStore = create<CartState>()(
   persist(
     (set, get) => ({
       items: [],
-      addItem: (product) => {
+      addItem: (product, quantity = 1) => {
         set((state) => {
           const existingItem = state.items.find((item) => item.product.id === product.id);
           if (existingItem) {
-            // Already in cart, do nothing or maybe update quantity? 
-            // In a bazaar, usually stock is 1, so adding more might not make sense.
-            // Let's just return current state if already there to prevent adding > stock.
-            return state;
+            return {
+              items: state.items.map(item => 
+                item.product.id === product.id 
+                  ? { ...item, quantity: Math.min(item.quantity + quantity, product.stockCount) } 
+                  : item
+              )
+            };
           }
-          return { items: [...state.items, { product, quantity: 1 }] };
+          return { items: [...state.items, { product, quantity }] };
         });
       },
       removeItem: (productId) => {

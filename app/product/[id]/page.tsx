@@ -117,9 +117,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
               {/* Descrição Detalhada */}
               <div className="mt-auto">
                 <h3 className="text-xl font-bold text-slate-900 mb-4">Sobre esta peça</h3>
-                <div className="prose prose-slate prose-p:leading-relaxed prose-p:text-slate-600">
-                  <p>{product.detailedDescription}</p>
-                </div>
+                <div className="prose prose-slate prose-p:leading-relaxed prose-p:text-slate-600" dangerouslySetInnerHTML={{ __html: product.detailedDescription }} />
               </div>
 
             </div>
