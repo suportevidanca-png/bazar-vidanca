@@ -5,6 +5,7 @@ import { Search, Menu, Heart } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import CartIcon from '@/components/CartIcon';
+import Image from 'next/image';
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -34,9 +35,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2 group">
-              <div className="bg-orange-500 text-white p-2 rounded-xl group-hover:bg-orange-600 transition-colors shadow-lg shadow-orange-500/20">
-                <Heart className="w-6 h-6" />
-              </div>
+              <Image src="/logo.png" alt="Instituto Vidança" width={40} height={40} className="object-contain" />
               <span className="font-bold text-xl tracking-tight text-white">Instituto Vidança</span>
             </Link>
             <nav className="hidden md:flex space-x-8">
