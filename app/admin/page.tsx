@@ -4,6 +4,8 @@ import { redirect } from "next/navigation";
 import { ProductCondition } from "@prisma/client";
 import Link from "next/link";
 import HtmlTextArea from "@/components/HtmlTextArea";
+import { writeFile, mkdir } from "fs/promises";
+import path from "path";
 
 export default function AdminPage() {
   async function createProduct(formData: FormData) {
@@ -20,12 +22,32 @@ export default function AdminPage() {
     const stockCount = parseInt(formData.get("stockCount") as string);
     const isFeatured = formData.get("isFeatured") === "on";
     
-    // Pegar as 3 imagens e salvar num array Json
-    const images = [
-      formData.get("image1") as string,
-      formData.get("image2") as string,
-      formData.get("image3") as string,
-    ].filter(Boolean); // remove strings vazias
+    // Processar e salvar as imagens enviadas
+    const images: string[] = [];
+    const imageKeys = ["image1", "image2", "image3"];
+    
+    // Garantir que a pasta uploads existe
+    const uploadDir = path.join(process.cwd(), "public", "uploads");
+    try {
+      await mkdir(uploadDir, { recursive: true });
+    } catch (e) {
+      console.error("Erro ao criar diretório de uploads", e);
+    }
+
+    for (const key of imageKeys) {
+      const file = formData.get(key) as File | null;
+      if (file && file.size > 0 && file.name !== "undefined") {
+        const buffer = Buffer.from(await file.arrayBuffer());
+        // Gerar um nome único para o arquivo
+        const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
+        const ext = path.extname(file.name) || '.jpg';
+        const filename = `${uniqueSuffix}${ext}`;
+        const filePath = path.join(uploadDir, filename);
+        
+        await writeFile(filePath, buffer);
+        images.push(`/uploads/${filename}`);
+      }
+    }
 
     await prisma.product.create({
       data: {
@@ -56,7 +78,7 @@ export default function AdminPage() {
         </Link>
       </div>
       
-      <form action={createProduct} className="space-y-6 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
+      <form action={createProduct} encType="multipart/form-data" className="space-y-6 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
         
         {/* Informações Básicas */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -124,12 +146,21 @@ export default function AdminPage() {
         </div>
 
         <div className="p-4 bg-blue-50/50 rounded-2xl space-y-4 border border-blue-100">
-          <label className="block text-sm font-semibold text-blue-900">Fotos do Produto (URLs)</label>
-          <p className="text-xs text-blue-700 mb-2">Forneça pelo menos 1 imagem. Até 3 suportadas.</p>
+          <label className="block text-sm font-semibold text-blue-900">Fotos do Produto (Câmera ou Arquivo)</label>
+          <p className="text-xs text-blue-700 mb-2">Envie pelo menos 1 imagem. Ao clicar pelo celular, a câmera será ativada.</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <input name="image1" type="url" required placeholder="URL da Foto 1 (Capa)" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors text-sm" />
-            <input name="image2" type="url" placeholder="URL da Foto 2" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors text-sm" />
-            <input name="image3" type="url" placeholder="URL da Foto 3" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors text-sm" />
+            <div>
+              <label className="block text-xs font-medium text-slate-500 mb-1">Foto Principal (Capa) *</label>
+              <input name="image1" type="file" accept="image/*" capture="environment" required className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-blue-100 file:text-blue-700 hover:file:bg-blue-200 transition" />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-500 mb-1">Foto Adicional 2</label>
+              <input name="image2" type="file" accept="image/*" capture="environment" className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 transition" />
+            </div>
+            <div>
+              <label className="block text-xs font-medium text-slate-500 mb-1">Foto Adicional 3</label>
+              <input name="image3" type="file" accept="image/*" capture="environment" className="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-xl file:border-0 file:text-sm file:font-semibold file:bg-slate-100 file:text-slate-700 hover:file:bg-slate-200 transition" />
+            </div>
           </div>
         </div>
 
