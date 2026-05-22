@@ -1,6 +1,6 @@
 import { prisma } from "@/lib/prisma";
 import { notFound } from "next/navigation";
-import { ShoppingBag, ArrowLeft, ShieldCheck, Truck } from "lucide-react";
+import { ShoppingBag, ArrowLeft, ArrowRight, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
 import AddToCartButton from "@/components/AddToCartButton";
 import PageTracker from "@/components/PageTracker";
