@@ -79,7 +79,7 @@ export default async function InstitutionalHome() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Card 1: Dança */}
-            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+            <Link href="/cursos#danca" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=800&auto=format&fit=crop" alt="Dança" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent"></div>
@@ -100,7 +100,7 @@ export default async function InstitutionalHome() {
             </Link>
 
             {/* Card 2: Música */}
-            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-orange-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+            <Link href="/cursos#musica" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-orange-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=800&auto=format&fit=crop" alt="Música" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-orange-900/90 via-orange-900/40 to-transparent"></div>
@@ -121,7 +121,7 @@ export default async function InstitutionalHome() {
             </Link>
 
             {/* Card 3: Ofícios */}
-            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+            <Link href="/cursos#artes-manuais" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=800&auto=format&fit=crop" alt="Artes Manuais" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent"></div>
@@ -142,9 +142,9 @@ export default async function InstitutionalHome() {
             </Link>
 
             {/* Card 4: Esporte e Cidadania */}
-            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-emerald-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+            <Link href="/cursos#esporte" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-emerald-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1542152342-a226760de8f5?q=80&w=800&auto=format&fit=crop" alt="Esporte e Cidadania" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
+                <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?q=80&w=800&auto=format&fit=crop" alt="Esporte e Cidadania" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-emerald-900/40 to-transparent"></div>
               </div>
               <div className="relative z-10 text-white mt-auto">
@@ -163,7 +163,7 @@ export default async function InstitutionalHome() {
             </Link>
 
             {/* Card 5: Tecnologia */}
-            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-cyan-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+            <Link href="/cursos#tecnologia" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-cyan-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Tecnologia" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/40 to-transparent"></div>
@@ -184,7 +184,7 @@ export default async function InstitutionalHome() {
             </Link>
 
             {/* Card 6: Inclusão */}
-            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-rose-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+            <Link href="/cursos#inclusao" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-rose-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Inclusão" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-rose-900/90 via-rose-900/40 to-transparent"></div>

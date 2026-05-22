@@ -3,8 +3,8 @@ import Link from "next/link";
 import PageTracker from "@/components/PageTracker";
 
 export default function DoarPage() {
-  const pixKey = "contato@vidanca.org";
-  // API pública para gerar o QR Code apontando para a chave PIX (email)
+  const pixKey = "00020126440014br.gov.bcb.pix0122financeiro@vidanca.org5204000053039865802BR5917INSTITUTO VIDANCA6009FORTALEZA622505213UaQQ2nTvmTAUm5TxMc8z6304FEA5";
+  // API pública para gerar o QR Code apontando para o PIX Copia e Cola
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(pixKey)}`;
 
   return (
@@ -68,23 +68,21 @@ export default function DoarPage() {
                 <img src={qrCodeUrl} alt="QR Code para Doação PIX" className="w-48 h-48 md:w-56 md:h-56 mix-blend-multiply" />
               </div>
 
-              <p className="text-sm text-slate-500 font-medium mb-3">Abra o app do seu banco e escaneie o código acima, ou use a chave e-mail abaixo:</p>
+              <p className="text-sm text-slate-500 font-medium mb-3">Abra o app do seu banco e escaneie o QR code acima, ou use o Pix Copia e Cola abaixo:</p>
 
               {/* Chave Pix Copia e Cola */}
-              <div className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 flex items-center justify-between">
-                <div className="flex items-center gap-3 pl-3 overflow-hidden text-slate-700">
-                  <Mail size={18} className="text-slate-400 shrink-0" />
-                  <span className="font-bold truncate">{pixKey}</span>
+              <div className="w-full bg-slate-50 border border-slate-200 rounded-xl p-2 flex flex-col gap-2">
+                <div className="flex items-center gap-3 px-3 py-2 text-slate-700 bg-white border border-slate-200 rounded-lg">
+                  <span className="font-mono text-xs break-all text-left">{pixKey}</span>
                 </div>
-                {/* Aqui poderíamos ter uma ação real de cópia, mas visualmente já funciona */}
-                <button className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-sm font-bold hover:bg-slate-100 transition flex items-center gap-2">
-                  <Copy size={16} /> Copiar
-                </button>
               </div>
 
-              <p className="text-xs text-slate-400 mt-6 mt-auto">
-                Favorecido: Associação Vidança Cia de Danças do Ceará
-              </p>
+              <div className="text-xs text-slate-500 mt-6 mt-auto text-left space-y-1 bg-slate-50 p-4 rounded-xl border border-slate-100 w-full">
+                <p><span className="font-bold">Favorecido:</span> Instituto Vidança</p>
+                <p><span className="font-bold">Banco:</span> Cora</p>
+                <p><span className="font-bold">Agência:</span> 0001</p>
+                <p><span className="font-bold">Conta Corrente:</span> 6231259-3</p>
+              </div>
 
             </div>
 

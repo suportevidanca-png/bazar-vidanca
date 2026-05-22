@@ -24,7 +24,7 @@ export default function CursosPage() {
       <section className="max-w-7xl mx-auto px-6 -mt-10 space-y-12">
         
         {/* Dança */}
-        <div className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row border border-slate-100 group">
+        <div id="danca" className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row border border-slate-100 group">
           <div className="lg:w-2/5 min-h-[300px] lg:min-h-full relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=800&auto=format&fit=crop" alt="Dança" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-blue-900/40 mix-blend-multiply"></div>
@@ -65,7 +65,7 @@ export default function CursosPage() {
         </div>
 
         {/* Música (Reverso) */}
-        <div className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row-reverse border border-slate-100 group">
+        <div id="musica" className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row-reverse border border-slate-100 group">
           <div className="lg:w-2/5 min-h-[300px] lg:min-h-full relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=800&auto=format&fit=crop" alt="Música" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-orange-900/40 mix-blend-multiply"></div>
@@ -94,7 +94,7 @@ export default function CursosPage() {
         </div>
 
         {/* Artes Manuais */}
-        <div className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row border border-slate-100 group">
+        <div id="artes-manuais" className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row border border-slate-100 group">
           <div className="lg:w-2/5 min-h-[300px] lg:min-h-full relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=800&auto=format&fit=crop" alt="Artes Manuais" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-purple-900/40 mix-blend-multiply"></div>
@@ -123,7 +123,7 @@ export default function CursosPage() {
         </div>
 
         {/* Esporte e Cidadania (Reverso) */}
-        <div className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row-reverse border border-slate-100 group">
+        <div id="esporte" className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row-reverse border border-slate-100 group">
           <div className="lg:w-2/5 min-h-[300px] lg:min-h-full relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1542152342-a226760de8f5?q=80&w=800&auto=format&fit=crop" alt="Esporte e Cidadania" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-emerald-900/40 mix-blend-multiply"></div>
@@ -152,7 +152,7 @@ export default function CursosPage() {
         </div>
 
         {/* Tecnologia */}
-        <div className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row border border-slate-100 group">
+        <div id="tecnologia" className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row border border-slate-100 group">
           <div className="lg:w-2/5 min-h-[300px] lg:min-h-full relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Tecnologia" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-cyan-900/40 mix-blend-multiply"></div>
@@ -177,7 +177,7 @@ export default function CursosPage() {
         </div>
 
         {/* Inclusão (Reverso) */}
-        <div className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row-reverse border border-slate-100 group">
+        <div id="inclusao" className="bg-white rounded-[3rem] shadow-xl shadow-slate-200/50 overflow-hidden flex flex-col lg:flex-row-reverse border border-slate-100 group">
           <div className="lg:w-2/5 min-h-[300px] lg:min-h-full relative overflow-hidden">
             <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Inclusão" className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-rose-900/40 mix-blend-multiply"></div>
