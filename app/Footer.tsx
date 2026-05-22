@@ -9,7 +9,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
           <div className="col-span-1 md:col-span-1">
             <h2 className="text-2xl font-extrabold text-white mb-4 tracking-tight flex items-center gap-2">
-              <Image src="/logo.png" alt="Instituto Vidança" width={50} height={50} className="object-contain" />
+              <Image src="/logo.png" alt="Instituto Vidança" width={100} height={100} className="object-contain" />
               Instituto Vidança
             </h2>
             <p className="text-slate-400 text-sm leading-relaxed mb-6">
