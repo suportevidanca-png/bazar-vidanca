@@ -2,6 +2,7 @@ import { ArrowRight, ShoppingBag, Music, Palette, Users, Sparkles, Heart } from 
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import CustomCursor from '@/components/CustomCursor';
+import PageTracker from '@/components/PageTracker';
 
 export const dynamic = 'force-dynamic';
 

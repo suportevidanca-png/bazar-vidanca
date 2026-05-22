@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ShoppingBag, ArrowLeft, ShieldCheck, Truck } from "lucide-react";
 import Link from "next/link";
 import AddToCartButton from "@/components/AddToCartButton";
+import PageTracker from "@/components/PageTracker";
 
 export const dynamic = 'force-dynamic';
 
@@ -29,6 +30,7 @@ export default async function ProductPage({ params }: { params: Promise<{ id: st
 
   return (
     <div className="bg-slate-50 min-h-screen py-12">
+      <PageTracker productId={product.id} />
       <div className="max-w-7xl mx-auto px-6">
         
         {/* Voltar */}

@@ -1,5 +1,6 @@
 import { HeartHandshake, Mail, Phone, ArrowLeft, Copy } from "lucide-react";
 import Link from "next/link";
+import PageTracker from "@/components/PageTracker";
 
 export default function DoarPage() {
   const pixKey = "contato@vidanca.org";
@@ -8,6 +9,7 @@ export default function DoarPage() {
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen py-12">
+      <PageTracker path="/doar" />
       <div className="max-w-4xl mx-auto px-6">
         
         {/* Voltar */}

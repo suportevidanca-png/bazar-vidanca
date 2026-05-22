@@ -1,25 +1,29 @@
 import { ShoppingBag, ArrowRight } from 'lucide-react';
 import { prisma } from '@/lib/prisma'; // Importa a conexão
 import Link from 'next/link';
+import PageTracker from '@/components/PageTracker';
+import BazarProductsList from '@/components/BazarProductsList';
 
 export const dynamic = 'force-dynamic';
 
 export default async function BazarHome() {
   // Busca os produtos do MySQL usando o Prisma
   const products = await prisma.product.findMany({
+    where: { isActive: true },
     orderBy: { createdAt: 'desc' }
   });
 
   // Busca o produto destaque ou o mais recente
   const featuredProduct = await prisma.product.findFirst({
-    where: { isFeatured: true }
-  }) || products[0];
+    where: { isFeatured: true, isActive: true }
+  }) || (products.length > 0 ? products[0] : null);
 
   const featuredImages = featuredProduct ? (featuredProduct.images as string[]) : [];
   const featuredCover = featuredImages && featuredImages.length > 0 ? featuredImages[0] : null;
 
   return (
     <div className="bg-[#f8f9fa] min-h-screen pb-20">
+      <PageTracker path="/bazar" />
       {/* Hero Section - Dinâmico */}
       <section className="max-w-7xl mx-auto px-6 pt-12 pb-20 grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
         <div className="space-y-6">
@@ -91,63 +95,7 @@ export default async function BazarHome() {
       {/* Grid de Produtos REAIS do Banco */}
       <section className="max-w-7xl mx-auto px-6 py-20">
         <h3 className="text-3xl font-bold text-slate-900 mb-10">Produtos do Bazar</h3>
-        
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {products.map((product) => {
-            // Parse images if exists
-            const images = product.images as string[];
-            const coverImage = images && images.length > 0 ? images[0] : null;
-
-            // Map Condition
-            const conditionLabels: Record<string, string> = {
-              NEW: "Novo",
-              LIKE_NEW: "Seminovo",
-              USED: "Usado",
-            };
-
-            const isOutOfStock = product.stockCount < 1;
-
-            return (
-              <Link href={`/product/${product.id}`} key={product.id} className="bg-white rounded-3xl p-4 shadow-sm border border-slate-50 hover:shadow-xl transition-all duration-500 group flex flex-col cursor-pointer">
-                <div className="relative aspect-square bg-slate-100 rounded-2xl mb-4 flex items-center justify-center overflow-hidden">
-                   {/* Badge Condição */}
-                   <div className="absolute top-3 left-3 z-10 bg-white/90 backdrop-blur text-xs font-bold px-3 py-1 rounded-full shadow-sm text-slate-700">
-                     {conditionLabels[product.condition]}
-                   </div>
-                   
-                   {/* Imagem */}
-                   {coverImage ? (
-                     <img src={coverImage} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
-                   ) : (
-                     <span className="text-slate-300 text-xs text-center px-4">Sem Imagem</span>
-                   )}
-                </div>
-                
-                <div className="flex-1">
-                  <h4 className="font-bold text-slate-800 mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors">{product.name}</h4>
-                  <p className="text-xs text-slate-400 mb-3">{product.category} {product.size ? `• Tam: ${product.size}` : ''}</p>
-                  <p className="text-sm text-slate-600 mb-4 line-clamp-2 leading-relaxed">
-                    {product.shortDescription}
-                  </p>
-                </div>
-
-                <div className="flex justify-between items-center mt-auto pt-4 border-t border-slate-50">
-                  <span className="text-lg font-black text-blue-600">
-                    R$ {Number(product.price).toFixed(2)}
-                  </span>
-                  
-                  {isOutOfStock ? (
-                    <span className="text-xs font-bold text-red-500 bg-red-50 px-3 py-2 rounded-xl">Esgotado</span>
-                  ) : (
-                    <button className="bg-slate-900 text-white p-2 rounded-xl hover:bg-blue-600 transition shadow-sm">
-                      <ShoppingBag size={18} />
-                    </button>
-                  )}
-                </div>
-              </Link>
-            );
-          })}
-        </div>
+        <BazarProductsList products={products} />
       </section>
     </div>
   );

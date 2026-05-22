@@ -23,6 +23,9 @@ model product {
   dimensions          String?          // Ex: 10x10x10 cm
   images              Json             @default("[]") // Array de URLs
   isFeatured          Boolean          @default(false)
+  isActive            Boolean          @default(true) // Controle para remover do bazar
+  views               Int              @default(0)    // Estatísticas de visualização
+  addedToCart         Int              @default(0)    // Estatísticas de adição ao carrinho
   createdAt           DateTime         @default(now())
   updatedAt           DateTime         @updatedAt
   orderItems          OrderItem[]
@@ -68,4 +71,10 @@ enum OrderStatus {
   PAID
   CANCELLED
   COMPLETED
+}
+
+model PageVisit {
+  id        String   @id @default(uuid())
+  path      String   // Ex: '/', '/bazar', '/doar'
+  createdAt DateTime @default(now())
 }

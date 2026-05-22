@@ -47,7 +47,12 @@ export default function AdminPage() {
 
   return (
     <div className="max-w-3xl mx-auto py-16 px-6">
-      <h1 className="text-3xl font-bold text-slate-900 mb-8">Cadastrar Novo Produto</h1>
+      <div className="flex items-center justify-between mb-8">
+        <h1 className="text-3xl font-bold text-slate-900">Cadastrar Novo Produto</h1>
+        <Link href="/dashboard" className="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-600/30 flex items-center gap-2">
+          Ver Dashboard
+        </Link>
+      </div>
       
       <form action={createProduct} className="space-y-6 bg-white p-8 rounded-3xl border border-slate-100 shadow-sm">
         

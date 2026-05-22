@@ -4,14 +4,16 @@ import { useState } from 'react';
 import { ShoppingBag, Check } from 'lucide-react';
 import { useCartStore } from '@/store/cart';
 import { product } from '@prisma/client';
+import { incrementCartCount } from '@/app/actions';
 
 export default function AddToCartButton({ product }: { product: product }) {
   const [added, setAdded] = useState(false);
   const addItem = useCartStore((state) => state.addItem);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = async () => {
     addItem(product);
     setAdded(true);
+    await incrementCartCount(product.id);
     setTimeout(() => setAdded(false), 2000);
   };
 

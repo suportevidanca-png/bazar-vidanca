@@ -45,7 +45,7 @@ export default function Header() {
               <Link href="/bazar" className="text-sm font-bold text-orange-400 hover:text-orange-300 transition flex items-center gap-1">
                 Bazar Vidança
               </Link>
-              <Link href="/admin" className="text-sm font-medium text-slate-200 hover:text-white transition">Admin</Link>
+              <Link href="/login" className="text-sm font-medium text-slate-200 hover:text-white transition">Login</Link>
             </nav>
           </div>
           <div className="flex items-center gap-4">
