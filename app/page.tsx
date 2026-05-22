@@ -1,4 +1,4 @@
-import { ArrowRight, ShoppingBag, Music, Palette, Users, Sparkles, Heart } from 'lucide-react';
+import { ArrowRight, ShoppingBag, Music, Palette, Users, Sparkles, Heart, Trophy, Laptop, HeartHandshake } from 'lucide-react';
 import { prisma } from '@/lib/prisma';
 import Link from 'next/link';
 import CustomCursor from '@/components/CustomCursor';
@@ -77,9 +77,9 @@ export default async function InstitutionalHome() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {/* Card 1: Dança */}
-            <Link href="/sobre" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[400px] flex flex-col justify-end">
+            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-blue-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1518834107812-67b0b7c58434?q=80&w=800&auto=format&fit=crop" alt="Dança" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-900/90 via-blue-900/40 to-transparent"></div>
@@ -89,8 +89,8 @@ export default async function InstitutionalHome() {
                   <Users size={32} className="text-white" />
                 </div>
                 <h3 className="text-3xl font-black mb-3 tracking-tight">Dança</h3>
-                <p className="text-blue-50 leading-relaxed mb-6 text-base font-medium line-clamp-3">
-                  Balé clássico, dança contemporânea e ritmos populares, promovendo disciplina, saúde e expressão corporal.
+                <p className="text-blue-50 leading-relaxed mb-6 text-sm font-medium line-clamp-3">
+                  Balé Clássico, Dança Contemporânea, Dança Dramática, Hip Hop / Danças Urbanas e Dança Funcional.
                 </p>
                 <div className="font-black uppercase tracking-wider flex items-center gap-2 group-hover:text-blue-200 text-sm">
                   <span>Conhecer</span> 
@@ -100,7 +100,7 @@ export default async function InstitutionalHome() {
             </Link>
 
             {/* Card 2: Música */}
-            <Link href="/sobre" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-orange-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[400px] flex flex-col justify-end">
+            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-orange-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
                 <img src="https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=800&auto=format&fit=crop" alt="Música" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-orange-900/90 via-orange-900/40 to-transparent"></div>
@@ -110,8 +110,8 @@ export default async function InstitutionalHome() {
                   <Music size={32} className="text-white" />
                 </div>
                 <h3 className="text-3xl font-black mb-3 tracking-tight">Música</h3>
-                <p className="text-orange-50 leading-relaxed mb-6 text-base font-medium line-clamp-3">
-                  Aulas teóricas e práticas de instrumentos variados e canto coral, despertando talentos e sensibilidade.
+                <p className="text-orange-50 leading-relaxed mb-6 text-sm font-medium line-clamp-3">
+                  Aulas de Flauta e Percussão, unindo técnica, sensibilidade e matrizes culturais.
                 </p>
                 <div className="font-black uppercase tracking-wider flex items-center gap-2 group-hover:text-orange-200 text-sm">
                   <span>Conhecer</span> 
@@ -121,20 +121,83 @@ export default async function InstitutionalHome() {
             </Link>
 
             {/* Card 3: Ofícios */}
-            <Link href="/sobre" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[400px] flex flex-col justify-end">
+            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-purple-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
               <div className="absolute inset-0 z-0">
-                <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=800&auto=format&fit=crop" alt="Ofícios" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
+                <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?q=80&w=800&auto=format&fit=crop" alt="Artes Manuais" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
                 <div className="absolute inset-0 bg-gradient-to-t from-purple-900/90 via-purple-900/40 to-transparent"></div>
               </div>
               <div className="relative z-10 text-white mt-auto">
                 <div className="w-16 h-16 bg-purple-500/80 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
                   <Palette size={32} className="text-white" />
                 </div>
-                <h3 className="text-3xl font-black mb-3 tracking-tight">Ofícios</h3>
-                <p className="text-purple-50 leading-relaxed mb-6 text-base font-medium line-clamp-3">
-                  Costura, artesanato criativo e tecnologia, focando na profissionalização e na geração de renda local.
+                <h3 className="text-3xl font-black mb-3 tracking-tight">Artes Manuais</h3>
+                <p className="text-purple-50 leading-relaxed mb-6 text-sm font-medium line-clamp-3">
+                  Fuxico, Bordado e Corte e Costura. Foco em tradições artesanais do Ceará e geração de renda.
                 </p>
                 <div className="font-black uppercase tracking-wider flex items-center gap-2 group-hover:text-purple-200 text-sm">
+                  <span>Conhecer</span> 
+                  <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-3" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Card 4: Esporte e Cidadania */}
+            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-emerald-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+              <div className="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1542152342-a226760de8f5?q=80&w=800&auto=format&fit=crop" alt="Esporte e Cidadania" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-emerald-900/90 via-emerald-900/40 to-transparent"></div>
+              </div>
+              <div className="relative z-10 text-white mt-auto">
+                <div className="w-16 h-16 bg-emerald-500/80 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                  <Trophy size={32} className="text-white" />
+                </div>
+                <h3 className="text-3xl font-black mb-3 tracking-tight">Esporte & Cidadania</h3>
+                <p className="text-emerald-50 leading-relaxed mb-6 text-sm font-medium line-clamp-3">
+                  Aulas de Karatê e Capoeira que trabalham a mente, o respeito e a defesa pessoal.
+                </p>
+                <div className="font-black uppercase tracking-wider flex items-center gap-2 group-hover:text-emerald-200 text-sm">
+                  <span>Conhecer</span> 
+                  <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-3" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Card 5: Tecnologia */}
+            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-cyan-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+              <div className="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=800&auto=format&fit=crop" alt="Tecnologia" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-cyan-900/90 via-cyan-900/40 to-transparent"></div>
+              </div>
+              <div className="relative z-10 text-white mt-auto">
+                <div className="w-16 h-16 bg-cyan-500/80 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:-rotate-3">
+                  <Laptop size={32} className="text-white" />
+                </div>
+                <h3 className="text-3xl font-black mb-3 tracking-tight">Tecnologia</h3>
+                <p className="text-cyan-50 leading-relaxed mb-6 text-sm font-medium line-clamp-3">
+                  Robótica e introdução à programação para criarem soluções lógicas do futuro.
+                </p>
+                <div className="font-black uppercase tracking-wider flex items-center gap-2 group-hover:text-cyan-200 text-sm">
+                  <span>Conhecer</span> 
+                  <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-3" />
+                </div>
+              </div>
+            </Link>
+
+            {/* Card 6: Inclusão */}
+            <Link href="/cursos" className="group relative bg-slate-900 p-10 rounded-[2.5rem] shadow-xl hover:-translate-y-3 hover:shadow-2xl hover:shadow-rose-900/50 transition-all duration-500 overflow-hidden cursor-pointer block min-h-[420px] flex flex-col justify-end">
+              <div className="absolute inset-0 z-0">
+                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?q=80&w=800&auto=format&fit=crop" alt="Inclusão" className="w-full h-full object-cover opacity-40 group-hover:opacity-50 transition-opacity duration-500 group-hover:scale-110" />
+                <div className="absolute inset-0 bg-gradient-to-t from-rose-900/90 via-rose-900/40 to-transparent"></div>
+              </div>
+              <div className="relative z-10 text-white mt-auto">
+                <div className="w-16 h-16 bg-rose-500/80 backdrop-blur-md rounded-2xl flex items-center justify-center mb-6 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6">
+                  <HeartHandshake size={32} className="text-white" />
+                </div>
+                <h3 className="text-3xl font-black mb-3 tracking-tight">Inclusão</h3>
+                <p className="text-rose-50 leading-relaxed mb-6 text-sm font-medium line-clamp-3">
+                  Libras (Língua Brasileira de Sinais) e Educação Financeira para todos.
+                </p>
+                <div className="font-black uppercase tracking-wider flex items-center gap-2 group-hover:text-rose-200 text-sm">
                   <span>Conhecer</span> 
                   <ArrowRight size={18} className="transition-transform duration-300 group-hover:translate-x-3" />
                 </div>
