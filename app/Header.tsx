@@ -35,7 +35,7 @@ export default function Header() {
         <div className="flex justify-between items-center h-16">
           <div className="flex items-center gap-8">
             <Link href="/" className="flex items-center gap-2 group">
-              <Image src="/logo.png" alt="Instituto Vidança" width={40} height={40} className="object-contain" />
+              <Image src="/logo.png" alt="Instituto Vidança" width={56} height={56} className="object-contain" />
               <span className="font-bold text-xl tracking-tight text-white">Instituto Vidança</span>
             </Link>
             <nav className="hidden md:flex space-x-8">
