@@ -2,6 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 import { ProductCondition } from "@prisma/client";
+import Link from "next/link";
 
 export default function AdminPage() {
   async function createProduct(formData: FormData) {
@@ -60,15 +61,15 @@ export default function AdminPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="md:col-span-2">
             <label className="block text-sm font-medium text-slate-700 mb-2">Nome do Produto</label>
-            <input name="name" type="text" required className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none" />
+            <input name="name" type="text" required className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Preço (R$)</label>
-            <input name="price" type="number" step="0.01" required className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none" />
+            <input name="price" type="number" step="0.01" required className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Categoria</label>
-            <select name="category" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none bg-white">
+            <select name="category" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors">
               <option value="Clothes">Roupas</option>
               <option value="Toys">Brinquedos</option>
               <option value="Sandals">Sandálias</option>
@@ -81,11 +82,11 @@ export default function AdminPage() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-4 p-4 bg-slate-50 rounded-2xl">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Quantidade</label>
-            <input name="stockCount" type="number" defaultValue={1} required className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none" />
+            <input name="stockCount" type="number" defaultValue={1} required className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Condição</label>
-            <select name="condition" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none bg-white">
+            <select name="condition" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors">
               <option value="NEW">Novo</option>
               <option value="LIKE_NEW">Seminovo</option>
               <option value="USED">Usado - Em bom estado</option>
@@ -93,11 +94,11 @@ export default function AdminPage() {
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Tamanho (Opcional)</label>
-            <input name="size" type="text" placeholder="Ex: M, 42" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none" />
+            <input name="size" type="text" placeholder="Ex: M, 42" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Cor (Opcional)</label>
-            <input name="color" type="text" placeholder="Ex: Azul" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none" />
+            <input name="color" type="text" placeholder="Ex: Azul" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors" />
           </div>
         </div>
 
@@ -105,11 +106,11 @@ export default function AdminPage() {
         <div className="space-y-4">
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Descrição Curta (Vitrine)</label>
-            <input name="shortDescription" type="text" maxLength={250} required placeholder="Resumo de 2 linhas..." className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none" />
+            <input name="shortDescription" type="text" maxLength={250} required placeholder="Resumo de 2 linhas..." className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors" />
           </div>
           <div>
             <label className="block text-sm font-medium text-slate-700 mb-2">Descrição Detalhada</label>
-            <textarea name="detailedDescription" rows={4} required placeholder="História da peça, material, dimensões..." className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none"></textarea>
+            <textarea name="detailedDescription" rows={4} required placeholder="História da peça, material, dimensões..." className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors"></textarea>
           </div>
         </div>
 
@@ -125,9 +126,9 @@ export default function AdminPage() {
           <label className="block text-sm font-semibold text-blue-900">Fotos do Produto (URLs)</label>
           <p className="text-xs text-blue-700 mb-2">Forneça pelo menos 1 imagem. Até 3 suportadas.</p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-            <input name="image1" type="url" required placeholder="URL da Foto 1 (Capa)" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none text-sm" />
-            <input name="image2" type="url" placeholder="URL da Foto 2" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none text-sm" />
-            <input name="image3" type="url" placeholder="URL da Foto 3" className="w-full px-4 py-3 rounded-xl border border-slate-200 outline-none text-sm" />
+            <input name="image1" type="url" required placeholder="URL da Foto 1 (Capa)" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors text-sm" />
+            <input name="image2" type="url" placeholder="URL da Foto 2" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors text-sm" />
+            <input name="image3" type="url" placeholder="URL da Foto 3" className="w-full px-4 py-3 rounded-xl border-2 border-slate-300 bg-slate-50 text-slate-900 focus:border-slate-400 focus:bg-white outline-none transition-colors text-sm" />
           </div>
         </div>
 
