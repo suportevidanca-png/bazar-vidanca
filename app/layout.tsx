@@ -19,6 +19,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-br">
+      <head>
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossOrigin="anonymous" />
+      </head>
       <body className={`${inter.className} bg-slate-50 text-slate-900 flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-grow">
